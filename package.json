@@ -1,0 +1,26 @@
+{
+  "name": "minied",
+  "version": "1.0.0",
+  "description": "a simple edit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve --open Chrome.exe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenxiaoleizi/miniEd.git"
+  },
+  "author": "chenlei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenxiaoleizi/miniEd/issues"
+  },
+  "homepage": "https://github.com/chenxiaoleizi/miniEd#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
