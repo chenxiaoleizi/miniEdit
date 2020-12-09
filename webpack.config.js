@@ -14,6 +14,15 @@ module.exports = {
         port: 8080
     },
 
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: "ts-loader"
+            }
+        ]
+    },
+
     plugins: [
         new HtmlWebpackPlugin()
     ]
