@@ -1,6 +1,3 @@
-import textColor from "../lib/index"
+import MiniEdit from "../lib/index"
 
-function a(){
-    console.log(textColor)
-}
-a()
+let myEdit = new MiniEdit("edit-box")
