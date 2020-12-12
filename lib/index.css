@@ -2,4 +2,42 @@
     width: 100%;
     min-width: 500px;
     height: 300px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.mini-edit-header {
+    height: 40px;
+    border-bottom: 1px solid#c5c5c5;
+    display: flex;
+    align-items: center;
+}
+
+.mini-edit-command {
+    width: 50px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    border-right: 1px solid #c5c5c5;
+    position: relative;
+
+}
+.mini-edit-command:hover > .mini-edit-command-values {
+    display: block;
+}
+
+.mini-edit-command-values {
+    min-width: 100%;
+    padding-top: 6px;
+    position: absolute;
+    top: 32px;
+    display: none;
+    background: #d9d8d8;
+}
+
+.mini-edit-content {
+    min-height: 200px;
+    outline: none;
+    padding: 10px;
 }
