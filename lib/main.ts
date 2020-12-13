@@ -1,7 +1,7 @@
 interface Command {
     command: string;
     text: string;
-    values?: Array<string>
+    values?: Array<string | any>
 }
 
 const commander: Array<Command> = [
@@ -21,7 +21,24 @@ const commander: Array<Command> = [
     {
         command: "fontSize",
         text: "H",
-        values: ["30", "20", "10"]
+        values: [
+            {
+                text: "h1",
+                value: "7"
+            },
+            {
+                text: "h2",
+                value: "6"
+            },
+            {
+                text: "h3",
+                value: "5"
+            },
+            {
+                text: "h4",
+                value: "4"
+            }
+        ]
     }
 ]
 
@@ -66,9 +83,18 @@ class MiniEdit {
             command.values.forEach(function(value){
                 let valueButton = createElem("div", "mini-edit-command-value");
                 
-                valueButton.innerHTML = value;
+                let cmdText = "";
+                let cmdVal = ""
+                if (typeof value === "string") {
+                    cmdText = value;
+                    cmdVal = value
+                } else {
+                    cmdText = value.text;
+                    cmdVal = value.value
+                }
+                valueButton.innerHTML = cmdText;
                 valueButton.setAttribute("command", command.command)
-                valueButton.setAttribute("command-value", value)
+                valueButton.setAttribute("command-value", cmdVal)
 
                 _self.handleEvent(valueButton)
 

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve --open Chrome.exe"
+    "dev": "webpack serve --open Chrome.exe",
+    "build": "webpack --config webpack.build.config.js"
   },
   "repository": {
     "type": "git",
