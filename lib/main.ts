@@ -48,6 +48,8 @@ function createElem(type: string, className?){
     return dom
 }
 
+let cachedRange: any = null;
+
 
 class MiniEdit {
     constructor(dom) {
@@ -64,6 +66,7 @@ class MiniEdit {
  
         let editContent = createElem("div", "mini-edit-content");
         editContent.contentEditable = "true";
+        editContent.onmouseleave = this.handleMosueLeave;
         
         miniEdit.appendChild(editHeader)
         miniEdit.appendChild(editContent)
@@ -115,13 +118,28 @@ class MiniEdit {
         document.execCommand(command, false, value || null);
     }
 
+    handleMosueLeave(event){
+        let selObj = window.getSelection();
+        // 鼠标leave时，缓存当前的选区，isCollapsed为false表示有选取，false表示的知识当前的焦点在可编辑区域
+        if (!selObj.isCollapsed) {
+            cachedRange  = selObj.getRangeAt(0);
+        }
+    }
+
     handleEvent(dom){
         let _self = this;
         // fix 点击按钮时会导致可编辑区域失去焦点，没有选区，导致执行command无效
+        // 另外可以使用getSelection API对选区进行缓存，当执行命令前，先回复原来的选区
         dom.onmousedown = function(event){
-            event.preventDefault()
+            // event.preventDefault()
         } 
         dom.onclick = function(event){
+            var selObj = window.getSelection();
+            // 先清除掉选区
+            selObj.removeAllRanges()
+            // 再使用缓存的range
+            selObj.addRange(cachedRange)
+
             _self.execCommand(event)
         };
     }
